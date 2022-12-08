@@ -64,6 +64,7 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    // return added user
     addUser: {
       type: UserType,
       args: {
@@ -73,6 +74,19 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parentValue, { firstName, age, companyId }) {
         return axios.post(`${dbURL}/users`, { firstName, age, companyId }).then(res => res.data)
+      }
+    },
+    // return updated user
+    editUser: {
+      type: UserType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        firstName: { type: GraphQLString },
+        age: { type: GraphQLInt },
+        companyId: { type: GraphQLString }
+      },
+      resolve(parentValue, args) {
+        return axios.patch(`${dbURL}/users/${args.id}`, args).then(res => res.data)
       }
     },
     // return null on success
