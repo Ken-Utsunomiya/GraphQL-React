@@ -15,7 +15,10 @@ if (!MONGO_URI) {
 
 mongoose.Promise = global.Promise;
 mongoose.set('strictQuery', false)
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 mongoose.connection
   .once('open', () => console.log('Connected to MongoDB instance.'))
   .on('error', error => console.log('Error connecting to MongoDB instance:', error));
