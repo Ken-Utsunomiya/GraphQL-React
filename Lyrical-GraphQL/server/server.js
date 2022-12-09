@@ -14,6 +14,7 @@ if (!MONGO_URI) {
 }
 
 mongoose.Promise = global.Promise;
+mongoose.set('strictQuery', false)
 mongoose.connect(MONGO_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to MongoDB instance.'))
