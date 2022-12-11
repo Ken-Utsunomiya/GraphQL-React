@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import SongList from './components/SongList';
+import SongCreate from './components/SongCreate';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -13,13 +14,14 @@ const client = new ApolloClient({
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <div>
+      <HashRouter>
+        <div className='container'>
           <Routes>
-            <Route path="/" element={<SongList />} />
+            <Route exact path="/" element={<SongList />} />
+            <Route exact path="/song/new" element={<SongCreate />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ApolloProvider>
   )
 };
