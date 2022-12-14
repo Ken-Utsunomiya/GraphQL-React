@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useMutation, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 
-import getSongs from "../queries/fetchSongs";
+import GetSongs from "../queries/fetchSongs";
 import AddSong from "../queries/addSong";
 
 const SongCreate = () => {
@@ -17,7 +17,7 @@ const SongCreate = () => {
     event.preventDefault();
     addSong({
       variables: { title: title },
-      refetchQueries: [{ query: getSongs }]
+      refetchQueries: [{ query: GetSongs }]
     });
     navigate("/");
   }

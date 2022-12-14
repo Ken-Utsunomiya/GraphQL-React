@@ -1,7 +1,7 @@
 import "../style/style.css"
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import GetSongs from "../queries/fetchSongs";
 import DeleteSong from "../queries/deleteSong";
@@ -9,7 +9,6 @@ import DeleteSong from "../queries/deleteSong";
 const SongList = () => {
   const { data: get_data, loading: get_loading, error: get_error } = useQuery(GetSongs);
   const [deleteSong, { loading: del_loading, error: del_error }] = useMutation(DeleteSong);
-  const navigate = useNavigate();
 
   if (get_loading | del_loading) {
     return <div>Loading ...</div>;
@@ -23,7 +22,6 @@ const SongList = () => {
       variables: { id: id },
       refetchQueries: [{ query: GetSongs }]
     })
-    navigate("/")
   }
 
   return (

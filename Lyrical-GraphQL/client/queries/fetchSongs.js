@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-const getSongs = gql`
+const GetSongs = gql`
   {
     songs {
       id
@@ -9,4 +9,4 @@ const getSongs = gql`
   }
 `;
 
-export default getSongs;
+export default GetSongs;
