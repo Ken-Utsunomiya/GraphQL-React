@@ -11,9 +11,17 @@ const LyricList = ({ lyrics }) => {
     return <p>Error</p>
   }
 
-  const onLike = (id) => {
+  const onLike = (id, likes) => {
     likeLyric({
-      variables: { id: id }
+      variables: { id: id },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        likeLyric: {
+          id: id,
+          __typename: 'LyricType',
+          likes: likes + 1
+        }
+      }
     })
   }
 
@@ -25,7 +33,7 @@ const LyricList = ({ lyrics }) => {
           <div className="vote-box">
             <i
               className="material-icons"
-              onClick={() => onLike(id)}
+              onClick={() => onLike(id, likes)}
             >
               thumb_up
             </i>
