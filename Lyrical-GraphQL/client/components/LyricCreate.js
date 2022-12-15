@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
 
 import AddLyric from "../queries/addLyric";
 
