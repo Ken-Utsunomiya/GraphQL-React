@@ -13,7 +13,6 @@ const AuthForm = ({ onSubmit }) => {
     <div className='row'>
       <form className='col s7' onSubmit={onFormSubmit}>
         <div className='input-field'>
-          <label>Email</label>
           <input
             placeholder='Email'
             value={email}
@@ -21,7 +20,6 @@ const AuthForm = ({ onSubmit }) => {
           />
         </div>
         <div className='input-field'>
-          <label>Password</label>
           <input
             placeholder='Password'
             type='password'
