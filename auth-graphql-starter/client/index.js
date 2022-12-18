@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@ap
 import { Route, Routes, HashRouter } from 'react-router-dom'
 
 import App from './components/App'
+import LoginForm from './components/LoginForm'
 
 const httpLink = createHttpLink({
     uri: 'http://localhost:4000/graphql'
@@ -20,7 +21,8 @@ const Root = () => {
         <ApolloProvider client={client}>
             <HashRouter>
                 <Routes>
-                    <Route exact path="/" element={<App />} />
+                    <Route exact path="/" element={<App children={<div />} />} />
+                    <Route exact path="login" element={<App children={<LoginForm />} />} />
                 </Routes>
             </HashRouter>
         </ApolloProvider>
