@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import FETCH_CURRENT_USER from '../queries/CurrentUser'
 import LOGOUT from '../mutations/Logout'
@@ -8,11 +8,14 @@ import LOGOUT from '../mutations/Logout'
 const Header = () => {
   const { data, loading, error } = useQuery(FETCH_CURRENT_USER)
   const [logout] = useMutation(LOGOUT)
+  const navigate = useNavigate()
 
   const onLogoutClick = () => {
     logout({
-      refetchQueries: [{ query: FETCH_CURRENT_USER }]
+      refetchQueries: [{ query: FETCH_CURRENT_USER }],
+      awaitRefetchQueries: true
     })
+      .then(() => navigate('/'))
   }
 
   const renderButtons = () => {

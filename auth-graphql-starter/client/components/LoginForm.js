@@ -17,7 +17,7 @@ const LoginForm = () => {
       refetchQueries: [{ query: FETCH_CURRENT_USER }],
       awaitRefetchQueries: true
     })
-      .then(() => navigate('/'))
+      .then(() => navigate('/dashboard'))
       .catch((res) => {
         setErrors(res.graphQLErrors.map(err => err.message))
       })

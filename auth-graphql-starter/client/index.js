@@ -6,6 +6,7 @@ import { Route, Routes, HashRouter } from 'react-router-dom'
 import App from './components/App'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
+import Dashboard from './components/Dashboard'
 
 const httpLink = createHttpLink({
     uri: 'http://localhost:4000/graphql'
@@ -25,6 +26,7 @@ const Root = () => {
                     <Route exact path="/" element={<App children={<div />} />} />
                     <Route exact path="login" element={<App children={<LoginForm />} />} />
                     <Route exact path="signup" element={<App children={<SignupForm />} />} />
+                    <Route exact path="dashboard" element={<App children={<Dashboard />} />} />
                 </Routes>
             </HashRouter>
         </ApolloProvider>
