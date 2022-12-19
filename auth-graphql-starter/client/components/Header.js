@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import FETCH_CURRENT_USER from '../queries/CurrentUser'
-import LOGOUT from '../queries/Logout'
+import LOGOUT from '../mutations/Logout'
 
 const Header = () => {
   const { data, loading, error } = useQuery(FETCH_CURRENT_USER)

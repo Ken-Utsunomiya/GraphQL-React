@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client'
 import React, { useState } from 'react'
 import FETCH_CURRENT_USER from '../queries/CurrentUser'
 
-import SIGNUP from '../queries/Signup'
+import SIGNUP from '../mutations/Signup'
 import AuthForm from './AuthForm'
 
 const SignupForm = () => {
